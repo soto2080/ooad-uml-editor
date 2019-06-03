@@ -13,15 +13,15 @@ public final class groupedObject extends basicObject {
 
     @Override
     public void drawGraph(){
-        arrayList.forEach(obj->drawGraph());
+        arrayList.forEach(obj->obj.drawGraph());
     }
     @Override
     public void drawName(){
-        arrayList.forEach(obj->drawName());
+        arrayList.forEach(obj->obj.drawName());
     }
     @Override
     public void drawConnectionPort(){
-        arrayList.forEach(obj->drawConnectionPort());
+        arrayList.forEach(obj->obj.drawConnectionPort());
     }
     @Override
     public void setDiff(double dx,double dy){

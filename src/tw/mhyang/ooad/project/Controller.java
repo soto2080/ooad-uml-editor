@@ -7,14 +7,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
-import tw.mhyang.ooad.project.Manager.ObjectManager;
+import tw.mhyang.ooad.project.Item.basicObject;
+import tw.mhyang.ooad.project.Line.basicLine;
+import tw.mhyang.ooad.project.Mode.*;
 
 import java.util.ArrayList;
 import java.util.Optional;
 
 public class Controller {
-    private ArrayList<Button> btnArray = new ArrayList<>();
-    private ObjectManager objectManager;
+    //物件陣列
+    private final ArrayList<basicObject> objectArray = new ArrayList<>();
+    private final ArrayList<basicLine> lineArray = new ArrayList<>();
+    private final ArrayList<Button> btnArray = new ArrayList<>();
+    private Mode mode;
     @FXML private Canvas canvas;
     @FXML private Button selectBtn;
     @FXML private Button associationBtn ;
@@ -34,9 +39,8 @@ public class Controller {
         BtnAddList();
         closeBtn.setOnAction(e->closeButtonAction());
         changeNameBtn.setOnAction(e->changeNameDialog());
-        groupBtn.setOnAction(e->objectManager.wrapObject());
-        unGroupBtn.setOnAction(e->objectManager.UnwrapObject());
-        objectManager = new ObjectManager(canvas);
+        groupBtn.setOnAction(e->mode.wrapObject());
+        unGroupBtn.setOnAction(e->mode.UnwrapObject());
     }
 
     @FXML
@@ -59,27 +63,34 @@ public class Controller {
         });
         // 選中按鈕上色
         btn.getStyleClass().add("theChooseOne");
+        // Remove Handler before change to new mode
+        if(mode !=null)
+            mode.removeHandler();
         switch (btn.getId()){
             case "selectBtn":
-                objectManager.setMode(Mode.SELECT);
+                mode = new selectMode();
                 break;
             case "associationBtn":
-                objectManager.setMode(Mode.ASSOCIATION);
+                mode = new associationLineMode();
                 break;
             case "generalizationBtn":
-                objectManager.setMode(Mode.GENERALIZATION);
-                    break;
+                mode = new generalizationLineMode();
+                break;
             case "compositionBtn":
-                objectManager.setMode(Mode.COMPOSITION);
+                mode = new compositionLineMode();
                 break;
             case "classBtn":
-                objectManager.setMode(Mode.CLASS);
+                mode = new classMode();
                 break;
             case "caseBtn":
-                objectManager.setMode(Mode.USECASE);
+                mode = new caseMode();
              default:
                     break;
         }
+        mode.setCanvas(canvas);
+        mode.setLineArray(lineArray);
+        mode.setObjectArray(objectArray);
+        mode.setHandler();
     }
 
     @FXML
@@ -95,6 +106,6 @@ public class Controller {
         dialog.setHeaderText("重新命名");
         dialog.setContentText("請輸入名子:");
         Optional<String> result = dialog.showAndWait();
-        result.ifPresent(name -> objectManager.changeName(name));
+        result.ifPresent(name -> mode.changeName(name));
     }
 }

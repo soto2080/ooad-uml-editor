@@ -1,9 +1,8 @@
 package tw.mhyang.ooad.project.Item;
 
-import javafx.geometry.Pos;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
+
 
 import java.util.ArrayList;
 
@@ -48,9 +47,6 @@ public class basicObject {
     }
     public int getPortOnClick(){return portOnClick;}
     public Position getPortPos(int index){return pos.get(index);}
-    public String getName() {
-        return name;
-    }
     public void setName(String name) {
         this.name = name;
     }
@@ -102,10 +98,6 @@ public class basicObject {
         tmp.add(new Position(x+itemWidth,y+itemHeight/2));
         tmp.add(new Position(x+itemWidth/2,y));
         return tmp;
-    }
-
-    public ArrayList<Position> getPos() {
-        return pos;
     }
 
     public void drawConnectionPort(){
