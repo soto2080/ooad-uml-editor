@@ -59,10 +59,10 @@ public class Controller {
     private void OnBtnClick(Button btn){
         // 清除所有按鈕的CSS
         btnArray.forEach(button->{
-            button.getStyleClass().remove("theChooseOne");
+            button.getStyleClass().remove("theChosenOne");
         });
         // 選中按鈕上色
-        btn.getStyleClass().add("theChooseOne");
+        btn.getStyleClass().add("theChosenOne");
         // Remove Handler before change to new mode
         if(mode !=null)
             mode.removeHandler();

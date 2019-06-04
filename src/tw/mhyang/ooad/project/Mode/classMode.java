@@ -4,7 +4,6 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import tw.mhyang.ooad.project.Item.classObject;
-import tw.mhyang.ooad.project.Line.compositionLine;
 
 public class classMode extends Mode {
     public classMode(){}
@@ -24,7 +23,6 @@ public class classMode extends Mode {
                 //ObjectCreation
                 objectArray.add(new classObject(e.getX(), e.getY(), gc));
             }
-            ;
         }
     };
 }

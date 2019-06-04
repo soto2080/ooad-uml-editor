@@ -4,7 +4,6 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import tw.mhyang.ooad.project.Item.caseObject;
-import tw.mhyang.ooad.project.Item.classObject;
 
 public class caseMode extends Mode {
     public caseMode(){}

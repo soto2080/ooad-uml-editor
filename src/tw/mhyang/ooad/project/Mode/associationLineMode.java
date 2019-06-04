@@ -5,7 +5,6 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import tw.mhyang.ooad.project.Item.basicObject;
 import tw.mhyang.ooad.project.Line.associationLine;
-import tw.mhyang.ooad.project.Line.compositionLine;
 
 public class associationLineMode extends Mode{
     public associationLineMode(){

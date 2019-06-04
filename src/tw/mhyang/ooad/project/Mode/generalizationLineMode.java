@@ -4,7 +4,6 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import tw.mhyang.ooad.project.Item.basicObject;
-import tw.mhyang.ooad.project.Line.compositionLine;
 import tw.mhyang.ooad.project.Line.generalizationLine;
 
 public class generalizationLineMode extends Mode{
