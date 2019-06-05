@@ -17,10 +17,10 @@ public final class compositionLine extends basicLine {
         updatePos();
         calculateTransform();
         gc.setTransform(new Affine(transform));
-        gc.strokeLine(0, 0, length, 0);
+        gc.strokeLine(0, 0, getLength(), 0);
         gc.setFill(Color.BLACK);
         gc.fillRect(0,-RECT_SIZE/2,RECT_SIZE,RECT_SIZE);
-        gc.fillRect(length-RECT_SIZE/2,-RECT_SIZE/2,RECT_SIZE,RECT_SIZE);
+        gc.fillRect(getLength()-RECT_SIZE/2,-RECT_SIZE/2,RECT_SIZE,RECT_SIZE);
         gc.setTransform(new Affine());
     }
 }

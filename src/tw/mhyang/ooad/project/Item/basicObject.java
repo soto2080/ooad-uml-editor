@@ -6,7 +6,7 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
-public class basicObject {
+public abstract class basicObject {
     GraphicsContext gc;
     //繪圖參數
     double itemWidth = 150;

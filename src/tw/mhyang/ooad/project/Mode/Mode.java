@@ -7,15 +7,15 @@ import tw.mhyang.ooad.project.Line.basicLine;
 
 import java.util.ArrayList;
 
-public class Mode{
+public abstract class Mode{
     protected Canvas canvas;
     protected GraphicsContext gc;
     //物件陣列
-    protected ArrayList<basicObject> objectArray;
-    protected ArrayList<basicLine> lineArray;
-    protected basicObject selectedObject;
+    ArrayList<basicObject> objectArray;
+    ArrayList<basicLine> lineArray;
+    basicObject selectedObject;
 
-    public Mode(){
+    Mode(){
     }
     public void setCanvas(Canvas canvas){
         this.canvas = canvas;

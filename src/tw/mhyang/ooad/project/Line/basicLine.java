@@ -7,16 +7,16 @@ import tw.mhyang.ooad.project.Item.basicObject;
 
 import java.util.ArrayList;
 
-public class basicLine {
+public abstract class basicLine {
     protected final GraphicsContext gc;
-    protected Transform transform;
+    Transform transform;
     private final basicObject point1,point2;
     //tmp position
     private int index1,index2;
     private Position pos1,pos2;
-    protected double length,angle;
+    private double length,angle;
 
-    public basicLine(basicObject point1, int index1, basicObject point2, int index2, GraphicsContext gc){
+    basicLine(basicObject point1, int index1, basicObject point2, int index2, GraphicsContext gc){
         this.gc = gc;
         this.point1 = point1;
         this.point2 = point2;
@@ -24,7 +24,7 @@ public class basicLine {
         this.index2 = index2;
         draw();
     }
-    protected void updatePos(){
+    void updatePos(){
         pos1 = point1.getPortPos(index1);
         pos2 = point2.getPortPos(index2);
 
@@ -34,11 +34,13 @@ public class basicLine {
         calculateTransform();
     }
 
-    protected void calculateTransform(){
+    void calculateTransform(){
         double dx=pos2.getX()-pos1.getX(),dy=pos2.getY()-pos1.getY();
         angle = Math.atan2(dy,dx);
         length = Math.sqrt(dx*dx+dy*dy);
         transform = Transform.translate(pos1.getX(),pos1.getY());
         transform = transform.createConcatenation(Transform.rotate(Math.toDegrees(angle), 0, 0));
     }
+
+    double getLength(){return length;}
 }

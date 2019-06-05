@@ -17,9 +17,9 @@ public final class generalizationLine extends basicLine {
         updatePos();
         calculateTransform();
         gc.setTransform(new Affine(transform));
-        gc.strokeLine(0, 0, length, 0);
+        gc.strokeLine(0, 0, getLength(), 0);
         gc.setFill(Color.BLACK);
-        gc.fillPolygon(new double[]{length, length - ARR_SIZE, length - ARR_SIZE, length}, new double[]{0, -ARR_SIZE, ARR_SIZE, 0},4);
+        gc.fillPolygon(new double[]{getLength(), getLength() - ARR_SIZE, getLength() - ARR_SIZE, getLength()}, new double[]{0, -ARR_SIZE, ARR_SIZE, 0},4);
         gc.setTransform(new Affine());
     }
 }
