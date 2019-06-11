@@ -16,6 +16,7 @@ import java.util.Optional;
 
 public class Controller {
     //物件陣列
+    private final modeFactory modeFactory = new modeFactory();
     private final ArrayList<basicObject> objectArray = new ArrayList<>();
     private final ArrayList<basicLine> lineArray = new ArrayList<>();
     private final ArrayList<Button> btnArray = new ArrayList<>();
@@ -66,27 +67,7 @@ public class Controller {
         // Remove Handler before change to new mode
         if(mode !=null)
             mode.removeHandler();
-        switch (btn.getId()){
-            case "selectBtn":
-                mode = new selectMode();
-                break;
-            case "associationBtn":
-                mode = new associationLineMode();
-                break;
-            case "generalizationBtn":
-                mode = new generalizationLineMode();
-                break;
-            case "compositionBtn":
-                mode = new compositionLineMode();
-                break;
-            case "classBtn":
-                mode = new classMode();
-                break;
-            case "caseBtn":
-                mode = new caseMode();
-             default:
-                    break;
-        }
+        mode = modeFactory.getMode(btn.getId());
         mode.setCanvas(canvas);
         mode.setLineArray(lineArray);
         mode.setObjectArray(objectArray);
